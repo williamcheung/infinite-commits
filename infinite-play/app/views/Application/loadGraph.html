@@ -1,0 +1,32 @@
+#{extends 'main.html' /}
+#{set title:'Infinite Commits - MAF view' /}
+ 
+<h3>Most Active Files in <a href="https://github.com/${user}/${repo}/tree/${branch}">${user}/${repo}/${branch}</a> in last ${spanInDays} days</h3>
+
+<ol>
+    #{list items:fileActivities, as:'file'}
+        <li><a href="https://github.com/${user}/${repo}/blob/${branch}/${file.shortName}"><font size="+1">${file.shortName}</font></a> 
+        had ${file.commits.size() == 1 ? 'only ' : ''}<b>${file.commits.size()}</b>
+        <a href="https://github.com/${user}/${repo}/commits/${branch}/${file.shortName}">
+        ${file.commits.size() == 1 ? 'commit' : 'commits'}
+        </a>
+        ${file.commits.size() == 1 ? '' :
+        ' (over a span of ' + (
+        file.commitTimeSpanMinutes <= 90 ? // minutes
+        file.commitTimeSpanMinutes + ' minutes)' :
+        file.commitTimeSpanMinutes / 60 <= 24 ? // hours
+        ((int)file.commitTimeSpanMinutes / 60) + ' hours ' + file.commitTimeSpanMinutes % 60 + ' minutes)' :
+        ((int)file.commitTimeSpanMinutes / 60 / 24) + ' days ' + ((int)file.commitTimeSpanMinutes / 60) % 24 + ' hours ' + file.commitTimeSpanMinutes % 60 + ' minutes)'
+        )}
+        </li>
+    #{/list}
+</ol>
+
+<p>
+${fileActivities.empty ? 'No commits were found. Try going back further in the sands of time...' : ''}
+</p>
+<p>
+<i>${queryCancelled ? 'Note the results may have been truncated because the queries to GitHub exceeded your patience level :(' : ''}</i>
+</p>
+ 
+<a href="@{Application.index()}"><< Search again</a>

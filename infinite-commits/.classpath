@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/InfiniteGraph-2.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/jcommander-1.13.jar"/>
+	<classpathentry kind="lib" path="lib/lucene-core-3.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/oojava.jar"/>
+	<classpathentry kind="lib" path="lib/oojavad.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-jdk14-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/github-java-sdk.jar" sourcepath="C:/dev/github-java-sdk"/>
+	<classpathentry kind="lib" path="lib/gson-1.4.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

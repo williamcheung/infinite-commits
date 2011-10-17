@@ -1,0 +1,44 @@
+#{extends 'main.html' /}
+#{set title:'Infinite Commits' /}
+
+<center>
+    <form action="@{Application.loadGraph()}" method="GET">
+        <img src="public/images/infinitegraph-icon.gif"/>
+        <table>
+            <tr>
+                <td><img src="public/images/github-logo.png" width="200" height="200"/></td>
+                <td><img src="public/images/infinitegraph-icon.gif"/><br></td>
+            </tr>
+            <tr>
+                <td>GitHub Organization/User*:</td>
+                <td align="left"><input name="user" size="20" value="${session.user}"></td>
+            </tr>
+            <tr>
+                <td>Public Repository*:</td>
+                <td align="left"><input name="repo" size="20" value="${session.repo}"></td>
+            </tr>
+            <tr>
+                <td>Branch*:</td>
+                <td align="left"><input name="branch" size="20" value="${session.branch ?: 'master'}"></td>
+            </tr>
+            <tr>
+                <td>How far back*:</td>
+                <td align="left"><input name="spanInDays" size="1" value="${session.spanInDays ?: '7'}"> days</td>
+            </tr>
+            <tr>
+                <td>Patience level*:</td>
+                <td align="left"><input name="patienceMinutes" size="1" value="${session.patienceMinutes ?: '2'}"> minutes</td>
+            </tr>
+            <tr>
+                <td/>
+                <td align="center">
+                    <input type="submit" size="20" value="get most active files">
+                </td>
+            </tr>
+            <tr>
+                <td/>
+                <td><input type="checkbox" name="newSession" ${session.newSession ? 'checked' : ''}>new session</td>
+            </tr>
+        </table>
+    </form>
+</center>
